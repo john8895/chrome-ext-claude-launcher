@@ -1,3 +1,7 @@
+const DEFAULT_URL = "https://claude.ai";
+
 chrome.action.onClicked.addListener(() => {
-  chrome.tabs.create({ url: "https://claude.ai" });
+  chrome.storage.sync.get({ targetUrl: DEFAULT_URL }, ({ targetUrl }) => {
+    chrome.tabs.create({ url: targetUrl });
+  });
 });
